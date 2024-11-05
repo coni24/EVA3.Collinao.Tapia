@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conciertos</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+   
+    <nav class="menu">
+        <ul>
+            <li><a href="/conciertos">CONCIERTO</a></li>
+            <li><a href="/entradas">ENTRADAS</a></li>
+            <li><a href="/personas">PERSONAS</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <img src="{% static 'imgs/concert1.jpg' %}" alt="Concierto" class="hero-image">
+        <div class="hero-text">
+            <h1>AGREGAR NUEVO CONCIERTO</h1>
+            <a href="/conciertos" class="btn">Ver conciertos</a>
+        </div>
+    </div>
+</body>
+</html>

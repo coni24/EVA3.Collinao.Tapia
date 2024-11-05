@@ -15,7 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ConciertoApp import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.index),
+    path('entradas/', views.listaEntrada, name='entradas'),
+    path('agregarEntrada/',views.agregarEntrada),
+    path('eliminarEntrada/<int:id>', views.eliminarEntrada),
+    path('actualizarEntrada/<int:id>',views.actualizarEntrada),
+
+    path('personas/', views.listaPersona, name='personas'),
+    path('agregarPersona/', views.agregarPersona),
+    path('eliminarPersona/<int:id>/', views.eliminarPersona),
+    path('actualizarPersona/<int:id>/', views.actualizarPersona),
+
+    path('conciertos/', views.listaConcierto, name='conciertos'),
+    path('agregarConcierto/', views.agregarConcierto),
+    path('eliminarConcierto/<int:id>/', views.eliminarConcierto),
+    path('actualizarConcierto/<int:id>/', views.actualizarConcierto),
 ]
