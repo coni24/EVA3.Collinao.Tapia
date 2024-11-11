@@ -20,7 +20,7 @@
 }
 
 body{
-    background: var(--bg-color);
+    background: var(--text-color);
     color: var(--text-color);
 }
 
@@ -169,8 +169,9 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f5f5f5;
+    overflow: hidden;
 }
 
 .form-card {
@@ -238,4 +239,10 @@ header{
     border: 2px solid #9e54bb;
     border-radius: 10px;
 }
+
+.alert-violet {
+    background: #8a2be2;
+    color: white; 
+}
+
 
