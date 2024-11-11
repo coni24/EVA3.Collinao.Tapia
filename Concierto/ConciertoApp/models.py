@@ -6,7 +6,6 @@ class Persona(models.Model):
     Nombre = models.CharField(max_length=20)
     Apellido = models.CharField(max_length=20)
     Telefono = models.CharField(max_length=20)
-    Edad = models.IntegerField()
     Correo = models.EmailField()
 
     def __str__(self):
@@ -16,14 +15,14 @@ class Concierto(models.Model):
     Fecha = models.DateField(default="2024-10-31")
     Hora = models.TimeField(default="00:00")
     Lugar = models.CharField(max_length=100)
-    Categoria = models.CharField(max_length=15, default="General")
+    Categoria = models.CharField(max_length=15)
     Capacidad = models.IntegerField()
 
     def __str__(self):
         return f"{self.Lugar} - {self.Fecha}"
     
 class Entrada(models.Model):
-    Categoria = models.CharField(max_length = 50, default="Estándar")
+    Categoria = models.CharField(max_length = 50)
     Descripcion = models.CharField(max_length = 50)
     NumeroAsiento = models.IntegerField(default=1)
     Precio = models.IntegerField()

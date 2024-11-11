@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Conciertos</title>
+    <title>Agregar Concierto</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div>Conciertos</div>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="Agregar Concierto">
-    </form>
-    <a href="../conciertos">Ver conciertos</a>
+    <div class="container">
+        <div class="form-card">
+            <img src="{% static 'imgs/concert1.jpg' %}" alt="Concierto Imagen">
+            
+
+            <div class="form-content">
+                <h2>REGISTRAR CONCIERTO</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.Fecha.label_tag }}
+                        {{ form.Fecha }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Hora.label_tag }}
+                        {{ form.Hora }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Lugar.label_tag }}
+                        {{ form.Lugar }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Categoria.label_tag }}
+                        {{ form.Categoria }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Capacidad.label_tag }}
+                        {{ form.Capacidad }}
+                    </div>
+                    <button type="submit" class="btn-submit">Agregar Concierto</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Entradas</title>
+    <title>Agregar Concierto</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div>Entradas</div>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="Agregar Entrada">
-    </form>
-    <a href="../entradas">Ver Entradas</a>
+    <div class="container">
+        <div class="form-card">
+            <img src="{% static 'imgs/entrada.webp' %}" alt="Concierto Imagen">
+            
+
+            <div class="form-content">
+                <h2>REGISTRAR ENTRADA</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.Categoria.label_tag }}
+                        {{ form.Categoria }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Descripcion.label_tag }}
+                        {{ form.Descripcion }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.NumeroAsiento.label_tag }}
+                        {{ form.NumeroAsiento }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Precio.label_tag }}
+                        {{ form.Precio }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Sector.label_tag }}
+                        {{ form.Sector }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.concierto.label_tag }}
+                        {{ form.concierto }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.persona.label_tag }}
+                        {{ form.persona }}
+                    </div>
+                    <button type="submit" class="btn-submit">Agregar Concierto</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

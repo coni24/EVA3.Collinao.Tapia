@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Personas</title>
+    <title>Agregar Persona</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div>Personas</div>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="Agregar Persona">
-    </form>
-    <a href="../personas">Ver Personas</a>
+    <div class="container">
+        <div class="form-card">
+            <img src="{% static 'imgs/people2.jpg' %}" alt="Persona Imagen">
+            
+            <div class="form-content">
+                <h2>REGISTRAR PERSONA</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.RUT.label_tag }}
+                        {{ form.RUT }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Nombre.label_tag }}
+                        {{ form.Nombre }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Apellido.label_tag }}
+                        {{ form.Apellido }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Telefono.label_tag }}
+                        {{ form.Telefono }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Correo.label_tag }}
+                        {{ form.Correo }}
+                    </div>
+                    <button type="submit" class="btn-submit">Agregar Persona</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
