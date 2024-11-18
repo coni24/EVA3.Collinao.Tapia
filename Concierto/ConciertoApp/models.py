@@ -13,7 +13,7 @@ class Persona(models.Model):
 
 class Concierto(models.Model):
     Fecha = models.DateField(default="2024-10-31")
-    Hora = models.TimeField(default="00:00")
+    Hora = models.TimeField(default="11:00")
     Lugar = models.CharField(max_length=100)
     Categoria = models.CharField(max_length=15)
     Capacidad = models.IntegerField()
