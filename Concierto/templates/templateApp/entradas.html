@@ -9,12 +9,11 @@
 
 </head>
 <body class="container mt-5">
-    <div class="alert alert-violet display-1 text-center">Lista de Entradas</div>
+    <div class="alert alert-violet display-1 text-center">Entradas</div>
     {% if entradas %}
     <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
             <tr>
-                <th>Categoria</th>
                 <th>Descripcion</th>
                 <th>NumeroAsiento</th>
                 <th>Precio</th>
@@ -26,7 +25,6 @@
         {% for entrada in entradas %}
         <tbody>
             <tr>
-                <td>{{ entrada.Categoria }}</td>
                 <td>{{ entrada.Descripcion }}</td>
                 <td>{{ entrada.NumeroAsiento }}</td>
                 <td>{{ entrada.Precio }}</td>
@@ -40,7 +38,7 @@
         {% endfor %}
     </table>
     {% else %}
-    <div class="alert alert-primary" role="alert">No se encontraron entradas</div>
+    <div class="alert alert-primary" role="alert" style="background-color: #ffffff; color: rgb(0, 0, 0); border: 2px solid #ebc2fd; font-weight: bold;">NO SE ENCONTRARON ENTRADAS</div>
     {% endif %}
     <a href="../"  class="btn" style="background-color: #6c757d; color: white;">Volver Atrás</a>
     <a href="../agregarEntrada" class="btn float-end" style="background-color: #9e54bb; color: rgb(255, 255, 255); border: none;">Agregar Entradas</a>

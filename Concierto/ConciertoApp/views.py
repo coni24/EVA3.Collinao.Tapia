@@ -17,7 +17,11 @@ def agregarEntrada(request):
         form = FormEntrada(request.POST)
         if form.is_valid():
             form.save()
-        return index(request)
+            return redirect('/entradas')
+        else:
+            print(form.errors)
+            return render(request, 'templateApp/agregarEntrada.html', {'form': form})
+    
     data = {'form': form}
     return render(request,'templateApp/agregarEntrada.html',data)
 
@@ -33,7 +37,10 @@ def actualizarEntrada(request,id):
         form = FormEntrada(request.POST,instance=entrada)
         if form.is_valid():
             form.save()
-        return index(request)
+            return redirect('/entradas')
+        else:
+            print(form.errors)
+            return render(request, 'templateApp/agregarEntrada.html', {'form': form})
     data = {'form' : form}
     return render(request,'templateApp/agregarEntrada.html',data)
 
@@ -50,7 +57,7 @@ def agregarPersona(request):
         form = FormPersona(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('/personas')
+            return redirect('/personas')
     data = {'form': form}
     return render(request,'templateApp/agregarPersona.html',data)
 
@@ -66,7 +73,7 @@ def actualizarPersona(request,id):
         form = FormPersona(request.POST,instance=persona)
         if form.is_valid():
             form.save()
-        return index(request)
+            return redirect('/personas')
     data = {'form' : form}
     return render(request,'templateApp/agregarPersona.html',data)
 
@@ -80,11 +87,15 @@ def listaConcierto(request):
 
 def agregarConcierto(request):
     form = FormConcierto()
-    if request.method == 'POST':
+    if request.method == 'POST':  
         form = FormConcierto(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('/conciertos')
+            return redirect('/conciertos')
+        else:
+            print(form.errors)
+            return render(request, 'templateApp/agregarConcierto.html', {'form': form})
+    
     data = {'form': form}
     return render(request, 'templateApp/agregarConcierto.html', data)
 
@@ -100,6 +111,10 @@ def actualizarConcierto(request, id):
         form = FormConcierto(request.POST, instance=concierto)
         if form.is_valid():
             form.save()
-        return redirect('/conciertos')
+            return redirect('/conciertos')
+        else:
+            print(form.errors)
+            return render(request, 'templateApp/agregarConcierto.html', {'form': form})
+
     data = {'form': form}
     return render(request, 'templateApp/agregarConcierto.html', data)

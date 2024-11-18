@@ -2,10 +2,10 @@ from django.db import models
 
 
 class Persona(models.Model):
-    RUT = models.CharField(max_length=12,unique=True)
+    RUT = models.CharField(max_length=9,unique=True)
     Nombre = models.CharField(max_length=20)
     Apellido = models.CharField(max_length=20)
-    Telefono = models.CharField(max_length=20)
+    Telefono = models.CharField(max_length=9)
     Correo = models.EmailField()
 
     def __str__(self):
@@ -22,7 +22,6 @@ class Concierto(models.Model):
         return f"{self.Lugar} - {self.Fecha}"
     
 class Entrada(models.Model):
-    Categoria = models.CharField(max_length = 50)
     Descripcion = models.CharField(max_length = 50)
     NumeroAsiento = models.IntegerField(default=1)
     Precio = models.IntegerField()
@@ -31,4 +30,4 @@ class Entrada(models.Model):
     persona = models.ForeignKey(Persona, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.Categoria} - Asiento {self.NumeroAsiento}"
+        return f"{self.persona} - Asiento {self.NumeroAsiento}"

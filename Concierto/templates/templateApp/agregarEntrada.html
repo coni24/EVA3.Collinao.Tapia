@@ -18,20 +18,30 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        {{ form.Categoria.label_tag }}
-                        {{ form.Categoria }}
-                    </div>
-                    <div class="form-group">
                         {{ form.Descripcion.label_tag }}
                         {{ form.Descripcion }}
                     </div>
                     <div class="form-group">
                         {{ form.NumeroAsiento.label_tag }}
                         {{ form.NumeroAsiento }}
+                        {% if form.NumeroAsiento.errors %}
+                            <div class="error-message">
+                                {% for error in form.NumeroAsiento.errors %}
+                                    <p style="color: #9e54bb; font-weight: bold;">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         {{ form.Precio.label_tag }}
                         {{ form.Precio }}
+                        {% if form.Precio.errors %}
+                            <div class="error-message">
+                                {% for error in form.Precio.errors %}
+                                    <p style="color: #9e54bb; font-weight: bold;">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         {{ form.Sector.label_tag }}

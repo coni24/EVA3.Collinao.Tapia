@@ -2,18 +2,24 @@ from django import forms
 from ConciertoApp.models import Entrada, Persona, Concierto
 from itertools import cycle
 from datetime import date, datetime
+from django.core.exceptions import ValidationError
 
 class FormEntrada(forms.ModelForm):
     class Meta:
         model = Entrada
-        fields = ['concierto', 'persona', 'Categoria', 'Descripcion', 'NumeroAsiento', 'Precio', 'Sector']
+        fields = ['concierto', 'persona', 'Descripcion', 'NumeroAsiento', 'Precio', 'Sector']
     
-    def clean_Descripcion(self):
-        descripcion = self.cleaned_data['Descripcion']
-        if len(descripcion) > 200:
-            raise forms.ValidationError("La descripción no puede tener más de 200 caracteres.")
-        return descripcion
+    def clean_Precio(self):
+        precio = self.cleaned_data['Precio']
+        if precio <= 0:
+            raise forms.ValidationError("El precio no puedo ser negativo.")
+        return precio
     
+    def clean_NumeroAsiento(self):
+        numAsiento = self.cleaned_data['NumeroAsiento']
+        if numAsiento <= 0:
+            raise forms.ValidationError("El Número de Asiento no puedo ser negativo.")
+        return numAsiento
 
 class FormPersona(forms.ModelForm):
     class Meta:
@@ -48,6 +54,17 @@ class FormConcierto(forms.ModelForm):
         capacidad = self.cleaned_data['Capacidad']
         if capacidad <= 0:
             raise forms.ValidationError("La capacidad debe ser un número positivo.")
-        if capacidad > 100000:  
-            raise forms.ValidationError("La capacidad parece ser irrealmente alta.")
         return capacidad
+    
+    def clean_fecha(self):
+        fecha = self.cleaned_data['Fecha']
+        if fecha < date.today():
+            raise ValidationError("La fecha no puede ser una fecha anterior")
+        return fecha
+    
+    def clean_hora(self):
+        hora = self.cleaned_data['Hora']
+        if not isinstance(hora, datetime.time):
+            raise ValidationError('La hora debe estar en un formato válido.')
+        return hora
+    
